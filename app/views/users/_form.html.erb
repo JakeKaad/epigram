@@ -1,20 +1,17 @@
 <%= render 'layouts/errors', object: @user %>
 
-<%= form_for @user do |f| %>
+<%= bootstrap_form_for(@user) do |f| %>
 
   <div class="form-group">
-    <%= f.label :username %>
     <%= f.text_field :username %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, label_text: "Confirmation" %>
   </div>
 
   <%= f.submit %>

@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="container">
+  <%= render 'layouts/navbar' %>
+  <%= render 'layouts/flash' %>
+  <%= yield %>
+</div>
 
 </body>
 </html>
