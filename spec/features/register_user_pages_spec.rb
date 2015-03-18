@@ -26,7 +26,8 @@ describe 'the list users process' do
     go_home
     create_a_new_user
     go_home
-    click_on 'testuser1'
+    user = User.first
+    find("#user-link-#{user.id}").click
     expect(page).to have_content 'testuser1'
   end
 
