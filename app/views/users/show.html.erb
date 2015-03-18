@@ -1,2 +1,19 @@
-<%= image_tag @user.avatar.url(:medium) %>
-<%= image_tag @user.avatar.url(:thumb) %>
+<% @photos.each do |photo| %>
+  <%= image_tag photo.photo.url %>
+<% end %>
+
+<% if current_user == @user %>
+<h3>Add photo</h3>
+  <%= form_for([@user, @photo]) do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :photo %>
+      <%= f.file_field :photo %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+<% end %>
