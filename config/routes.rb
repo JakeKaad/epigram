@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root to: 'users#index'
 
-  resources :users, except: [:destroy, :edit, :update, :new]
+  resources :users, except: [:destroy, :edit, :update, :new] do
+    resources :photos, only: [:show, :create, :destroy]
+  end
+
   get '/register', to: "users#new"
 
   get '/login', to: "sessions#new"

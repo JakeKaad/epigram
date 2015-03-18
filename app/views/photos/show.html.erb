@@ -1,0 +1,4 @@
+<%= image_tag @photo.photo.url %>
+
+<%= @photo.name %>
+<%= link_to "Delete", user_photo_path(@user, @photo), data: {confirm: "Are you sure?", method: "delete"} %>
