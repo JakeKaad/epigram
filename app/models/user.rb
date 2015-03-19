@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :photos
+  has_many :photos, dependent: :destroy
   has_many :tags
   has_many :tagged_photos, class_name: "Photo", foreign_key: "photo_id", through: :tags
 

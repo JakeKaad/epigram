@@ -13,6 +13,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap_form'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'bootswatch-rails'
 
 group :development, :test do
   gem 'byebug'
