@@ -3,6 +3,8 @@ class PhotosController < ApplicationController
   before_action :find_user
 
   def show
+    @tag = Tag.new
+    @users = User.all
   end
 
   def create

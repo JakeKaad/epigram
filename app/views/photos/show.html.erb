@@ -2,3 +2,14 @@
 
 <%= @photo.name %>
 <%= link_to "Delete", user_photo_path(@user, @photo), data: {confirm: "Are you sure?", method: "delete"} %>
+
+<h4>Tag User</h4>
+<%= form_for @tag, :html => { :class => "form-horizontal" } do |f| %>
+  <%= f.hidden_field :photo_id, value: @photo.id %>
+
+  <div class="form-group">
+    <%= f.collection_select :user_id, @users, :id, :username, prompt: 'Select User'  %>
+  </div>
+
+  <%= f.submit class: "col-md-offset-2" %>
+<% end %>

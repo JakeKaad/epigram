@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :photos, only: [:show, :create, :destroy]
   end
 
+  resources :tags, only: [:create, :destroy]
+
   get '/register', to: "users#new"
 
   get '/login', to: "sessions#new"
