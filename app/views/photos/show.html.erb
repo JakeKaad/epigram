@@ -1,6 +1,6 @@
 <%= image_tag @photo.photo.url %>
 <div id="photo-caption">
-  <%= @photo.name %>
+  <%= @photo.name %> by <%= @photo.user.username %>
 </div>
 
 <%= link_to "Delete", user_photo_path(@user, @photo), data: {confirm: "Are you sure?", method: "delete"} %>
@@ -19,7 +19,10 @@
   <div class="add-tag">
     <%= form_for @tag, class: "form form-horizontal form-inline" do |f| %>
       <%= f.hidden_field :photo_id, value: @photo.id %>
-      <%= f.collection_select :user_id, @users, :id, :username, prompt: 'Tag User'  %>
+      <%= f.collection_check_boxes :user_id, @users, :id, :username do |cb|  %>
+        <% cb.label(class: "checkbox inline") { cb.check_box(class: "checkbox") + cb.text } %>
+      <% end %>
+
       <%= f.submit value="Tag", class: "btn btn-xs btn-success" %>
     <% end %>
   </div>

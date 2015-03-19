@@ -1,8 +1,14 @@
 class TagsController < ApplicationController
 
   def create
-    tag = Tag.create(tag_params)
-    photo = Photo.find(tag.photo_id)
+    params[:tag][:user_id].each do |user_id|
+      unless user_id.blank?
+        tag = Tag.new(tag_params)
+        tag.user_id = user_id
+        tag.save
+      end
+    end
+    photo = Photo.find(params[:tag][:photo_id])
     redirect_to user_photo_path(photo.user, photo)
   end
 
@@ -15,7 +21,7 @@ class TagsController < ApplicationController
 
   private
     def tag_params
-      params.require(:tag).permit(:photo_id, :user_id)
+      params.require(:tag).permit(:photo_id)
     end
 
 end
