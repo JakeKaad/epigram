@@ -33,15 +33,26 @@ describe 'the list users process' do
 
 end
 
-
 def create_a_new_user
   click_on 'Register'
   fill_in 'Username', with: 'testuser1'
   fill_in 'Password', with: 'password'
   fill_in 'Password confirmation', with: 'password'
+  attach_file('user_avatar', File.absolute_path('tz6.jpg'))
   click_on 'Create User'
 end
 
 def go_home
   visit '/'
+end
+
+def login
+  click_on 'Login'
+  fill_in 'Username', with: 'testuser1'
+  fill_in 'Password', with: 'password'
+  click_button 'Login'
+end
+
+def logout
+  click_on 'Logout'
 end

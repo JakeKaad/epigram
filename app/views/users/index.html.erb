@@ -1,7 +1,11 @@
-<h1>Users</h1>
 
-<ul>
-  <% @users.each do |user| %>
-    <li><%= link_to user.username, user_path(user), id: "user-link-#{user.id}" %></li>
+<div class="row photo-gallery">
+  <% @photos.each do |photo| %>
+    <div class="photo-box">
+      <figure>
+        <%= link_to image_tag(photo.photo.url), user_photo_path(photo.user, photo)  %>
+        <figcaption><%= photo.name %></figcaption>
+      </figure>
+    </div>
   <% end %>
-</ul>
+</div>

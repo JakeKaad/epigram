@@ -1,4 +1,27 @@
 <%= image_tag @photo.photo.url %>
+<div id="photo-caption">
+  <%= @photo.name %>
+</div>
 
-<%= @photo.name %>
 <%= link_to "Delete", user_photo_path(@user, @photo), data: {confirm: "Are you sure?", method: "delete"} %>
+
+<div class="tagged-users well">
+
+  <div class="display-tags ">
+    <ul class="list-unstyled list-inline">
+      Tags:
+      <% @photo.tagged_users.each do |tagged_user| %>
+        <li><%= link_to tagged_user.username, user_path(tagged_user) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="add-tag">
+    <%= form_for @tag, class: "form form-horizontal form-inline" do |f| %>
+      <%= f.hidden_field :photo_id, value: @photo.id %>
+      <%= f.collection_select :user_id, @users, :id, :username, prompt: 'Tag User'  %>
+      <%= f.submit value="Tag", class: "btn btn-xs btn-success" %>
+    <% end %>
+  </div>
+
+</div>
