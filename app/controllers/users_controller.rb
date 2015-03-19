@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_user, only: [:show]
 
   def index
-    @users = User.all
+    @photos = Photo.all.shuffle
   end
 
   def show
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
 
 
 private

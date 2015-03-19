@@ -2,18 +2,24 @@
   <div class="container-fluid">
 
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "epigram", users_path, class: "navbar-brand", id: "logo" %>
+      <% if logged_in? %>
+        <%= link_to "epigram", current_user, class: "navbar-brand", id: "logo" %>
+      <% else %>
+        <%= link_to "epigram", users_path, class: "navbar-brand", id: "logo" %>
+      <% end %>
+
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
         <% if logged_in? %>
+          <li class="upload"><a href="#">upload</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -29,3 +35,7 @@
     </div>
   </div>
 </nav>
+
+<% if logged_in? %>
+  <%= render 'layouts/upload_modal' %>
+<% end %>
