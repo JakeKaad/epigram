@@ -45,9 +45,9 @@ I am not quite sure how the form_tag collections work. </p>
 <p> Our code: </p>
 
 <code> 
-  <%= f.collection_check_boxes :user_id, @users, :id, :username do |cb|  %>
-    <% cb.label(class: "checkbox inline") { cb.check_box(class: "checkbox") + cb.text } %>
-  <% end %>
+  f.collection_check_boxes :user_id, @users, :id, :username do |cb|  
+    cb.label(class: "checkbox inline") { cb.check_box(class: "checkbox") + cb.text } 
+  end
 </code>
 
 <p> THe first line:  </p>
