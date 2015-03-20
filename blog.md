@@ -75,25 +75,25 @@ Lets see if I can break it down a little bit.  </p>
 
 <p> First off, here is all of the relevant code from our Photo, User, and Tag models for this association </p>
 
-<code>
-  class User < ActiveRecord::Base
-    has_many :photos
-    has_many :tags
-    has_many :tagged_photos, class_name: "Photo", foreign_key: "photo_id", through: :tags
-  end
-  
-  class Tag < ActiveRecord::Base
-    belongs_to :tagged_user, class_name: "User", foreign_key: :user_id
-    belongs_to :tagged_photo, class_name: "Photo", foreign_key: :photo_id
-    validates_uniqueness_of :user_id, scope: :photo_id
-  end
-  
-  class Photo < ActiveRecord::Base
-    belongs_to :user
-    has_many :tags
-    has_many :tagged_users, class_name: "User", foreign_key: "user_id", through: :tags
-  end
-</code>
+
+          class User < ActiveRecord::Base
+            has_many :photos
+            has_many :tags
+            has_many :tagged_photos, class_name: "Photo", foreign_key: "photo_id", through: :tags
+          end
+          
+          class Tag < ActiveRecord::Base
+            belongs_to :tagged_user, class_name: "User", foreign_key: :user_id
+            belongs_to :tagged_photo, class_name: "Photo", foreign_key: :photo_id
+            validates_uniqueness_of :user_id, scope: :photo_id
+          end
+          
+          class Photo < ActiveRecord::Base
+            belongs_to :user
+            has_many :tags
+            has_many :tagged_users, class_name: "User", foreign_key: "user_id", through: :tags
+          end
+
 
 <p> So what is going on here? This is a simple join table, but we are customizing the relationship names.  I know that it looks pretty
 difficult to grok at first, but I promise its not that bad.  Lets start with the user class </p>
