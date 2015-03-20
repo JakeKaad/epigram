@@ -46,11 +46,11 @@ I am not quite sure how the form_tag collections work. </p>
 
 <code> 
   f.collection_check_boxes :user_id, @users, :id, :username do |cb|  
-    cb.label(class: "checkbox inline") { cb.check_box(class: "checkbox") + cb.text } 
+    cb.label(class: "checkbox inline") { cb.check_box(class: "checkbox") + cb.text } </br>
   end
 </code>
 
-<p> THe first line:  </p>
+<p> The first line:  </p>
 <ol>
   <li>:user_id = the parameter key that we are passing through, the value will be an array of user ids  </li>
   <li>@users = the collection of objects that we are using to create the checkboxes.  One per object </li>
